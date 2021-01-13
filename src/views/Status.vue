@@ -1,6 +1,5 @@
 <template>
   <div id="status">
-
     <div>
       <p>Ordernummer #99809908</p>
       <img src="@/assets/graphics/drone.svg" alt="drone" />
@@ -23,6 +22,7 @@ export default {};
 
 <style scoped>
 #status {
+  text-align: center;
   color: whitesmoke;
   background-color: rgba(236, 109, 92, 0.986);
   padding: 2rem;
@@ -32,20 +32,19 @@ img[alt="drone"] {
   margin: 2rem;
 }
 .order {
-  
   margin-bottom: 4rem;
 }
-.order h1{
-    font-size: 2.5rem;
+.order h1 {
+  font-size: 2.5rem;
 }
-.order p{
-    font-size: 1.3rem;
+.order p {
+  font-size: 1.3rem;
 }
-button{
-    font-family: fantasy;
-    padding: 10px 40px;
-     font-size: 2rem;
-     border-radius: 25px;
-     border: white;
+button {
+  font-family: fantasy;
+  padding: 10px 40px;
+  font-size: 2rem;
+  border-radius: 25px;
+  border: white;
 }
 </style>

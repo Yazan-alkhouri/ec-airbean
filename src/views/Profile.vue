@@ -1,29 +1,29 @@
 <template>
-<div id="all">
+  <div id="all">
     <header>
-    <img src="@/assets/graphics/graphics-header.svg" alt="header" />
-    
-     <router-link to="/nav"><Ham />
-     </router-link>
-    
-    </header>
+      <img src="@/assets/graphics/graphics-header.svg" alt="header" />
 
-    
-</div>
+      <img src="@/assets/graphics/bag.svg" alt="bag" />
+    </header>
+    <section>
+      <img src="@/assets/graphics/user.svg" alt="profile" />
+      <h1>Sixten Kaffelover</h1>
+      <span>sixten.kaffelover@zocom.se</span>
+      <h2>Orderhistorik</h2>
+    </section>
+  </div>
 </template>
 
 <script>
-import Ham  from '@/components/ham.vue'
-export default {
-    components: {
-    Ham, 
-  },
-
-}
+export default {};
 </script>
 
 <style scoped>
-#all{
-    background-color: rgb(46, 39, 39);
+img[alt="profile"] {
+  margin: 30px;
+  width: 90px;
+}
+section h2{
+text-align: left;
 }
 </style>

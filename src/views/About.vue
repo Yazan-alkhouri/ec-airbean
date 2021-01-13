@@ -1,68 +1,83 @@
 <template>
   <div id="all">
-    <header>
-    <img src="@/assets/graphics/graphics-header.svg" alt="header" />
+    <Nav v-if="show" />
+    <div v-if="about">
+      <header>
+        <img src="@/assets/graphics/graphics-header.svg" alt="header" />
 
-    <router-link to="/nav"><Ham /></router-link>
-
-    
-    </header>
-    <article>
+        <img src="@/assets/graphics/bag.svg" alt="bag" @click="openHamMenu" />
+      </header>
+      <article>
         <h1>Vårt Kaffe</h1>
         <h6>
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et
+          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+          commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
+          et
         </h6>
         <p>
-        n enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam
-        dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
-        Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean
-        leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam
-        lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra
+          n enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam
+          dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.
+          Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
+          Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+          Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+          Phasellus viverra
         </p>
         <p>
-        nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
-        ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget
-        dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem
-        quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam
-        nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio
-        et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.
-        Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis
-        leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed
-        consequat, leo eget bibendum sodales, augue velit cursus nunc,
-    </p>
-    </article>
-    <div class="img-info">
-      <img src="@/assets/graphics/eva-cortado.jpg" alt="Eva" />
-      <p>Eva Cortado</p>
-      <span>VD &amp; Grundare</span>
+          nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
+          ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam
+          eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum
+          rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed
+          ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id,
+          lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien
+          ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci
+          eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet
+          nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum
+          sodales, augue velit cursus nunc,
+        </p>
+      </article>
+      <div class="img-info">
+        <img src="@/assets/graphics/eva-cortado.jpg" alt="Eva" />
+        <p>Eva Cortado</p>
+        <span>VD &amp; Grundare</span>
+      </div>
+
+      <img src="@/assets/graphics/graphics-footer.svg" alt="footer" />
     </div>
-    
-    <img src="@/assets/graphics/graphics-footer.svg" alt="footer" />
   </div>
 </template>
 
 <script>
-import Ham  from '@/components/ham.vue'
+import Nav from "@/components/Nav.vue";
 export default {
   components: {
-     Ham
-  }
-}
+    Nav,
+  },
+  data() {
+    return {
+      show: false,
+      about: true,
+    };
+  },
+  computed: {},
+  methods: {
+    openHamMenu() {
+      this.show = true;
+      this.about = false;
+    },
+  },
+};
 </script>
 
 
 <style >
 #all {
+  text-align: center;
   color: black;
   background-color: rgb(238, 225, 226);
 }
-header{
-  
-}
-article{
-    margin-left: 2rem;
-    
+
+article {
+  margin-left: 2rem;
 }
 article h1 {
   text-align: left;
@@ -76,7 +91,6 @@ article p {
   font-size: 14px;
   line-height: 26px;
   text-align: center;
-  
 }
 article h6 {
   font-family: Arial, Helvetica, sans-serif;
@@ -106,5 +120,10 @@ img[alt="header"] {
 }
 img[alt="footer"] {
   width: 100%;
+}
+img[alt="bag"] {
+  text-align: left;
+  width: 70px;
+  cursor: pointer;
 }
 </style>

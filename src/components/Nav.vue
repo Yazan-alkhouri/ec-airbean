@@ -1,7 +1,10 @@
 <template>
-  <div class="all">
+  <div class="all"
+  v-if="close">
     <div id="close">
-      <img src="@/assets/graphics/close.svg" alt="" />
+      <img src="@/assets/graphics/close.svg" alt="" 
+      @click="closeHamMenu()"
+      />
     </div>
     <div class="list">
       
@@ -20,11 +23,27 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      close:true
+    };
+  },
+  computed: {
+
+  },
+  methods: {
+    closeHamMenu() {
+      this.close = false;
+      
+    },
+  },
+};
 </script>
 
 <style scoped>
 .all {
+  text-align: center;
   background-color: rgba(0, 0, 0, 0.788);
   color: white;
   height: 1000px;
