@@ -1,9 +1,8 @@
 <template>
-  <div class="all"
-  v-if="close">
+  <div class="all">
     <div id="close">
       <img src="@/assets/graphics/close.svg" alt="" 
-      @click="closeHamMenu()"
+    
       />
     </div>
     <div class="list">
@@ -26,17 +25,14 @@
 export default {
   data() {
     return {
-      close:true
+      
     };
   },
   computed: {
 
   },
   methods: {
-    closeHamMenu() {
-      this.close = false;
-      
-    },
+    
   },
 };
 </script>

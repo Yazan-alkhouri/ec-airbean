@@ -8,7 +8,9 @@ Vue.config.productionTip = false
 
 new Vue({
   data(){return{
-    menu: M.menu
+    menu: M.menu,
+    total:0,
+    orderInfo:[]
   }},
   router,
   store,

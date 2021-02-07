@@ -5,17 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    menu:[],
+    /* menu:[],
     count: 0,
     user:{
       id: '1',
       name: 'jons'
-    }
+    } */
   },
   mutations: {
-    Increment_Count(state) {
+   /*  Increment_Count(state) {
       state.count += 1
-    }
+    } */
   },
   actions: {
   },

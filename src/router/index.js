@@ -2,9 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Landing from '../views/Landing.vue'
 import About from '../views/About.vue'
-import Menu from '../views/Menu.vue'
 import Status from '../views/Status.vue'
 import Profile from '../views/Profile.vue'
+import  Menu from '../views/Menu.vue'
+import  Nav from '../views/Nav.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -16,15 +17,15 @@ const routes = [
 
   },
   {
-    path: '/about',
-    name: 'About',
-    component: About
+    path: '/nav',
+    name: 'Nav',
+    component: Nav
 
   },
   {
-    path: '/menu',
-    name: 'Menu',
-    component: Menu
+    path: '/about',
+    name: 'About',
+    component: About
 
   },
   {
@@ -39,6 +40,13 @@ const routes = [
     component: Profile
 
   },
+  {
+    path: '/menu',
+    name: 'Menu',
+    component: Menu
+
+  }
+  
   
 ]
 

@@ -1,124 +1,107 @@
 <template>
-  <div id="menu">
+  <div class="menu">
     <header>
-      <img src="@/assets/graphics/graphics-header.svg" alt="header" />
-      <div>
-        <img src="@/assets/graphics/bag.svg" alt="bag" />
-        <img
-          src="@/assets/graphics/clock-padlock.svg"
-          alt="clock"
-          @click="showOrders"
-        />
-        <span>{{ count }}</span>
-      </div>
-    </header>
-    <h1>Meny</h1>
-
-    <section v-for="m in menu" :key="m.id">
-      <ul>
-        <div>
-          <img
-            src="@/assets/graphics/add.svg"
-            alt="add"
-            @click="incrementCount"
-          />
-          <p>{{ m.title }}</p>
-          <p class="light">............</p>
-          <p>{{ m.price }} Kr</p>
+        <div class="firstbackground">
+          <img src="@/assets/graphics/graphics-header.svg" alt="header" />
         </div>
-
-        <span>{{ m.desc }} </span>
-      </ul>
-    </section>
-
+       <a
+        href="#"
+        class="a-tag d-flex flex-column text-decoration-none align-items-center"
+        @click="$router.push({ path: '/nav' })"
+      >
+      <img src="@/assets/graphics/bag.svg" alt="ham" />
+      </a>
+         <h1>Meny</h1>
+   </header>
+    <ShoppingIcon @showAllorder="showAllorder"></ShoppingIcon>
+    <Myorder v-bind:visible="shownOrder"></Myorder>
+    <MenuItems
+      :menu="item"
+      v-for="item in menu"
+      :key="item.id"
+       @addNewItem="addNewItem(item)"
+    ></MenuItems>
     <img src="@/assets/graphics/graphics-footer.svg" alt="footer" />
   </div>
 </template>
 
 <script>
+import ShoppingIcon from "@/components/ShoppingIcon.vue";
+import MenuItems from "@/components/MenuItems.vue";
+import Myorder from "@/components/Myorder.vue";
 export default {
+  name: "Menu",
+  components: {
+    ShoppingIcon,
+    MenuItems,
+    Myorder
+  },
+  props: {},
   data() {
     return {
-      show: false,
-      menu: this.$root.menu,
+      shownOrder: false,
     };
   },
-  computed: {
-    user() {
-      return this.$store.state.user;
-    },
-    count() {
-      return this.$store.state.count;
-    },
-    /*  menu(){
-        return this.$store.state.menu;
-    } */
-  },
   methods: {
-    incrementCount() {
-      // use it when user click new item increase one for every click
-      this.$store.commit("Increment_Count"); // Increment_Count are en mutations in store.js
+    addNewItem(drink) {
+      let changing = this.menu.find(
+        (changing) => changing.id === drink.id
+      );
+      let value = { value: "" };
+      let cartItem = { ...changing, ...value };
+      if (this.orderItems.find((element) => element.id === cartItem.id)) {
+        cartItem.value += 1;
+      } else {
+        this.$root.total = this.$root.total + cartItem.price;
+        this.$root.orderInfo.push(cartItem);
+        cartItem.value++;
+      }
     },
-
-    showOrders() {
-      // here open the orders from component order.vue
+    showAllorder() {
+      this.shownOrder = !this.shownOrder;
+    },
+  },
+  computed: {
+    menu() {
+      return this.$root.menu;
+    },
+    orderItems() {
+      return this.$root.orderInfo;
     },
   },
 };
 </script>
-
 <style scoped>
-#menu {
+.menu {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+   
 }
 
-img[alt="bag"] {
-  width: 100px;
+h1{
+    font-size: 2rem;
+    margin: 0px;
 
-  cursor: pointer;
 }
 
-img[alt="add"] {
-  background-color: black;
-  width: 20px;
-  border-radius: 50%;
-  padding: 10px;
-  text-align: left;
-  margin-right: 30px;
-  margin-bottom: -10px;
-  cursor: pointer;
-}
-img[alt="clock"] {
+img[alt="ham"] {
+  width: 50px;
+  right: 12.5rem;
+  bottom: 5px;
   position: relative;
-  padding-left: 20rem;
-  width: 100px;
   cursor: pointer;
+
+}
+.info{
+display: block;
+}
+img[alt="header"] {
+ width: 25rem;
+
 }
 
-header span {
-  position: relative;
-  color: white;
-  border-radius: 50%;
-  background-color: rgb(199, 35, 35);
-  padding: 10px 15px;
-  right: 2rem;
-  bottom: 5rem;
-}
-ul {
-  text-align: center;
-  margin: 50px;
-}
-ul p {
-  display: inline;
-  font-size: 24px;
-  font-weight: bold;
-}
-ul span {
-  margin-right: 80px;
-  font-size: 12px;
-}
 
-.light {
-  opacity: 0.4;
-}
 </style>

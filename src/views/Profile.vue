@@ -2,8 +2,9 @@
   <div id="all">
     <header>
       <img src="@/assets/graphics/graphics-header.svg" alt="header" />
-
-      <img src="@/assets/graphics/bag.svg" alt="bag" />
+    <a @click="$router.push({ path: '/nav' })">
+      <img src="@/assets/graphics/bag.svg" alt="ham" />
+      </a>
     </header>
     <section>
       <img src="@/assets/graphics/user.svg" alt="profile" />

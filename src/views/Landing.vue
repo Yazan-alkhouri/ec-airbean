@@ -21,6 +21,7 @@ header {
   display: block;
 }
 img {
+  width: 100%;
   background-color: rgb(40, 153, 115);
 }
 

@@ -1,11 +1,11 @@
 <template>
   <div id="all">
-    <Nav v-if="show" />
-    <div v-if="about">
+    <div >
       <header>
         <img src="@/assets/graphics/graphics-header.svg" alt="header" />
-
+        <a @click="$router.push({ path: '/nav' })">
         <img src="@/assets/graphics/bag.svg" alt="bag" @click="openHamMenu" />
+        </a>
       </header>
       <article>
         <h1>Vårt Kaffe</h1>
@@ -47,15 +47,12 @@
 </template>
 
 <script>
-import Nav from "@/components/Nav.vue";
 export default {
   components: {
-    Nav,
   },
   data() {
     return {
-      show: false,
-      about: true,
+      
     };
   },
   computed: {},
